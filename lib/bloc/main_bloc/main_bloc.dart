@@ -10,9 +10,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   MainState get initialState => HomeState();
 
   @override
-  Stream<MainState> mapEventToState(
-    MainEvent event,
-  ) async* {
+  Stream<MainState> mapEventToState(MainEvent event) async* {
     if(event is ChangeState){
       yield event.state;
     }
