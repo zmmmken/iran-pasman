@@ -4,15 +4,15 @@ import 'file:///E:/New%20folder/iran-pasman/lib/tab/home/screen/homeTab.dart';
 import 'package:iranpasman/widgets/backdrop_appbar.dart';
 import 'package:iranpasman/widgets/clipper.dart';
 import 'package:iranpasman/widgets/custom_scaffold.dart';
-class HomePage extends StatefulWidget{
+class BasePage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-   return HomePageSatte();
+   return BasePageSatte();
   }
 
 }
-class HomePageSatte extends State<HomePage> {
+class BasePageSatte extends State<BasePage> {
   double _headerHeight = 195;
   int _currentIndex=0;
 

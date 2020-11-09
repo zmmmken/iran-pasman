@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:iranpasman/tab/home/widget/dailyPrice.dart';
+import 'package:iranpasman/tab/home/widget/dailyPrice-widget/dailyPrice.dart';
+import 'package:iranpasman/tab/home/widget/saleAdd-widget/saleAddTab.dart';
 
 class HomeTab extends StatefulWidget {
   @override
@@ -102,7 +103,8 @@ class HomeTabState extends State<HomeTab> {
 
 List<Widget> tabsContent=[
    DailyPrice(),
-   new Center(child: new Text("اگهی خرید"),),
+   new SaleAddTab(),
+//  new Center(child: new Text("اگهی خرید"),),
    new Center(child: new Text("اگهی فروش"),),
    new Center(child: new Text("مزایده"),),
 ];

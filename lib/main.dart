@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iranpasman/home_page/homePage.dart';
+
+import 'Base_page/basePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         )
 
       ),
-      home: HomePage(),
+      home: BasePage(),
       builder: (context, widget) {
         return Directionality(textDirection: TextDirection.rtl, child: widget);
       },
