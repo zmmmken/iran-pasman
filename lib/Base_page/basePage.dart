@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/New%20folder/iran-pasman/lib/tab/home/screen/homeTab.dart';
+import 'package:iranpasman/tab/home/screen/homeTab.dart';
 
 import 'package:iranpasman/widgets/backdrop_appbar.dart';
 import 'package:iranpasman/widgets/clipper.dart';
@@ -108,7 +108,7 @@ class BasePageSatte extends State<BasePage> {
           ],
         ),
       ),
-      frontLayer: tabWidget[_currentIndex],
+      frontLayer: tabWidget[0],
       bottomNavigationBar: bottomNavigationBar(context),
     );
   }

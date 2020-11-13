@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 abstract class MainEvent {}
 
 class ChangeState extends MainEvent{
-  final MainState state;
+  final int state;
 
   ChangeState(this.state);
 }

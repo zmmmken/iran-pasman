@@ -32,8 +32,6 @@ class HomeTabState extends State<HomeTab> {
           new SizedBox(height:40),
           Expanded(
             child: Container(
-              
-//                color: Colors.blue,
                 child: tabsContent[currentTab]),
           ),
 
