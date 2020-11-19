@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-class SaleAddTab extends StatelessWidget{
+class buyAddTab extends StatelessWidget{
   BorderSide itemCartLineSide=new BorderSide(color: Colors.grey.withOpacity(0.6),width: 1);
   TextStyle titleOfItemCartTextStyle=new TextStyle(fontWeight: FontWeight.bold,color: Colors.black);
   @override
@@ -24,19 +24,19 @@ class SaleAddTab extends StatelessWidget{
           ),
         ),
         new SizedBox(height: 4,),
-        itemList(),
+        itemList(context),
       ],
     );
   }
 
- Widget itemList() {
+ Widget itemList(BuildContext context) {
     return new Expanded(
       child: new Container(
         width: double.infinity,
         child:new ListView.builder(
           itemCount: 10,
           itemBuilder: (context,index){
-            return itemCart(index);
+            return itemCart(index,context);
 
           },
         ) ,
@@ -44,42 +44,49 @@ class SaleAddTab extends StatelessWidget{
     );
  }
 
-  Widget itemCart(int index) {
-    return new Container(
-       width: double.infinity,
-       margin: EdgeInsets.only(left: 20,right: 20),
-       padding: EdgeInsets.only(bottom: 10,top: 10),
-       decoration: new BoxDecoration(
-         border: new Border(top:itemCartLineSide, ),
-       ),
-       child: new Column(
-         crossAxisAlignment: CrossAxisAlignment.start,
-         children: [
-           new SizedBox(height: 5,),
-           new Text("خرید همهخ ضایعات و لوارم و ضایعات منرل کابینت  ",style:titleOfItemCartTextStyle ,overflow: TextOverflow.ellipsis,),
-           new SizedBox(height: 5,),
-           Container(
-             child: new Row(
-               mainAxisAlignment: MainAxisAlignment.start,
-               crossAxisAlignment: CrossAxisAlignment.center,
-               children: [
-                 _imageInCart("assets/images/trash.jpg"),
-                 new Column(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     textIconAttach(text1:"قیمت",text2: " 1100تومن به ازای هر کیلو",icon:Icons.attach_file_rounded ),
-                     textIconAttach(text1:"دسته",text2: "ضایعات اهن",icon:Icons.category_rounded ),
-                     textIconAttach(text1:"استان",text2: "تهران",icon:Icons.circle ),
-                     textIconAttach(text1:"شهر",text2: "تهران",icon:Icons.location_on ),
+  Widget itemCart(int index,BuildContext context) {
+    return GestureDetector (
+      onTap: (){
+        Navigator.of(context).pushNamed("/BuyPassmand");
+        print("hi");
+      },
+      child: new Container(
+         width: double.infinity,
+         margin: EdgeInsets.only(left: 20,right: 20),
+         padding: EdgeInsets.only(bottom: 10,top: 10),
+         decoration: new BoxDecoration(
+//           color: Colors.grey,
+           border: new Border(top:itemCartLineSide, ),
+         ),
+         child: new Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             new SizedBox(height: 5,),
+             new Text("خرید همهخ ضایعات و لوارم و ضایعات منرل کابینت  ",style:titleOfItemCartTextStyle ,overflow: TextOverflow.ellipsis,),
+             new SizedBox(height: 5,),
+             Container(
+               child: new Row(
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 crossAxisAlignment: CrossAxisAlignment.center,
+                 children: [
+                   _imageInCart("assets/images/trash.jpg"),
+                   new Column(
+                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                       textIconAttach(text1:"قیمت",text2: " 1100تومن به ازای هر کیلو",icon:Icons.attach_file_rounded ),
+                       textIconAttach(text1:"دسته",text2: "ضایعات اهن",icon:Icons.category_rounded ),
+                       textIconAttach(text1:"استان",text2: "تهران",icon:Icons.circle ),
+                       textIconAttach(text1:"شهر",text2: "تهران",icon:Icons.location_on ),
 
-                   ],
-                 )
+                     ],
+                   )
 
-               ],
-             ),
-           )
-         ],
-       ),
+                 ],
+               ),
+             )
+           ],
+         ),
+      ),
     );
   }
 

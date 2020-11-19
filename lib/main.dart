@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iranpasman/buy-passmand-screen/screen/buyScreen.dart';
 
 import 'Base_page/basePage.dart';
 
@@ -7,10 +8,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  Map _rout=<String,Widget Function(BuildContext context)>{
+    "/BuyPassmand":(context)=>BuyPassmand(),
+  };
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      routes:_rout ,
       theme: ThemeData(
         textTheme: TextTheme(),
         fontFamily: "MuliYekan",

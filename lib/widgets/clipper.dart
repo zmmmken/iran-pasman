@@ -5,6 +5,7 @@ class CustomClip extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     var path = Path();
+
     path.moveTo(size.width - constant, 0);
     path.lineTo(size.width, constant.toDouble());
     path.lineTo(size.width, size.height);
