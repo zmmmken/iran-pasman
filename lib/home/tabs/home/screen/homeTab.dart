@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:iranpasman/tab/home/widget/buyAdd-widget/buyAddTab.dart';
-import 'package:iranpasman/tab/home/widget/dailyPrice-widget/dailyPrice.dart';
-
+import 'package:iranpasman/home/tabs/home/widget/buyAdd-widget/buyAddTab.dart';
+import 'package:iranpasman/home/tabs/home/widget/dailyPrice-widget/dailyPrice.dart';
 
 class HomeTab extends StatefulWidget {
   @override
@@ -26,11 +25,11 @@ class HomeTabState extends State<HomeTab> {
 
     // TODO: implement build
     return Padding(
-      padding: const EdgeInsets.only(top: 45),
+      padding: const EdgeInsets.only(top: 15),
       child: new Column(
         children: [
           _tabBar(),
-          new SizedBox(height:40),
+          new SizedBox(height:10),
           Expanded(
             child: Container(
               
@@ -79,7 +78,7 @@ class HomeTabState extends State<HomeTab> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           new SvgPicture.asset(imageAddress, height: headIconHeight,color: color,),
-          new SizedBox(height: 15,),
+          new SizedBox(height: 5,),
           new Text(text, style: new TextStyle(
               color: color, fontWeight: FontWeight.w400,),)
         ],

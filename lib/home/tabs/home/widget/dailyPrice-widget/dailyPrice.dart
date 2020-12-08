@@ -27,15 +27,19 @@ class DailyPrice extends StatelessWidget {
                 "نوع",
                 style: _headOfListTextStyle,
               ),
+              context
             ),
             itemSizeController(
               new Text("خرده بار", style: _headOfListTextStyle),
+              context
             ),
             itemSizeController(
               new Text("عمده بار", style: _headOfListTextStyle),
+              context
             ),
             itemSizeController(
-              new Text("جزعیات", style: _headOfListTextStyle),
+              new Text("جزئیات", style: _headOfListTextStyle),
+              context
             ),
           ],
         ),
@@ -74,12 +78,15 @@ class DailyPrice extends StatelessWidget {
               "فله روغنی",
               style: _itemOfListTextStyle,
             ),
+            context
           ),
           itemSizeController(
             new Text("7755", style: _itemOfListTextStyle),
+            context
           ),
           itemSizeController(
             new Text("5268", style: _itemOfListTextStyle),
+            context
           ),
           itemSizeController(
             IconButton(
@@ -96,15 +103,17 @@ class DailyPrice extends StatelessWidget {
               splashRadius: 20,
               splashColor: Colors.red,
             ),
+              context
           ),
+
         ],
       ),
     );
   }
 
-  Widget itemSizeController(Widget widget) {
+  Widget itemSizeController(Widget widget,context) {
     return new Container(
-      width: 100,
+      width: MediaQuery.of(context).size.width*.25,
       child: Center(child: widget),
     );
   }

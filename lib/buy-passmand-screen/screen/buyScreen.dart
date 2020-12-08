@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'file:///E:/New%20folder/cloth-rent/lib/brand-discription/widget/foldButton.dart';
-import 'file:///E:/New%20folder/cloth-rent/lib/brand-discription/widget/typewriterTween.dart';
 import 'package:iranpasman/buy-passmand-screen/widegt/buttonClipper.dart';
 import 'package:iranpasman/buy-passmand-screen/widegt/headClipper.dart';
 

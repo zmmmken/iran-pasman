@@ -1,5 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:iranpasman/Advertise/screen/advertise_screen.dart';
+import 'package:iranpasman/models/Ad.dart';
 class buyAddTab extends StatelessWidget{
   BorderSide itemCartLineSide=new BorderSide(color: Colors.grey.withOpacity(0.6),width: 1);
   TextStyle titleOfItemCartTextStyle=new TextStyle(fontWeight: FontWeight.bold,color: Colors.black);
@@ -47,7 +50,23 @@ class buyAddTab extends StatelessWidget{
   Widget itemCart(int index,BuildContext context) {
     return GestureDetector (
       onTap: (){
-        Navigator.of(context).pushNamed("/BuyPassmand");
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context){
+            return AdvertiseScreen(advertise: Ad(
+              id: "1234",
+              title: "آهن آلات",
+              description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است",
+              time: DateTime.now(),
+              city: "مشهد",
+              images: [
+                "assets/images/image1.webp",
+                "assets/images/image2.webp",
+              ],
+              phoneNumber: "09158146043",
+              state: "خراسان رضوی",
+            ),);
+          })
+        );
         print("hi");
       },
       child: new Container(
@@ -56,7 +75,7 @@ class buyAddTab extends StatelessWidget{
          padding: EdgeInsets.only(bottom: 10,top: 10),
          decoration: new BoxDecoration(
 //           color: Colors.grey,
-           border: new Border(top:itemCartLineSide, ),
+           border: new Border(bottom:itemCartLineSide, ),
          ),
          child: new Column(
            crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,13 +86,14 @@ class buyAddTab extends StatelessWidget{
              Container(
                child: new Row(
                  mainAxisAlignment: MainAxisAlignment.start,
-                 crossAxisAlignment: CrossAxisAlignment.center,
+                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
-                   _imageInCart("assets/images/trash.jpg"),
+                   _imageInCart("assets/images/image1.webp"),
                    new Column(
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       textIconAttach(text1:"قیمت",text2: " 1100تومن به ازای هر کیلو",icon:Icons.attach_file_rounded ),
+                       textIconAttach(text1:"قیمت",text2: "آهن آلات",icon:Icons.attach_file_rounded ),
                        textIconAttach(text1:"دسته",text2: "ضایعات اهن",icon:Icons.category_rounded ),
                        textIconAttach(text1:"استان",text2: "تهران",icon:Icons.circle ),
                        textIconAttach(text1:"شهر",text2: "تهران",icon:Icons.location_on ),
@@ -91,12 +111,14 @@ class buyAddTab extends StatelessWidget{
   }
 
  Widget _imageInCart(String imageAddress) {
-    return new Container(
+    return  Container(
       height: 120,
       width: 110,
-      decoration: new BoxDecoration(
+      decoration: new ShapeDecoration(
         color: Colors.orange,
-       border: Border.all(style:BorderStyle.none),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5)
+        ),
         image: new DecorationImage(
           fit: BoxFit.fill,
           image: AssetImage(imageAddress),
@@ -109,20 +131,20 @@ class buyAddTab extends StatelessWidget{
 
  Widget textIconAttach({IconData icon,String text1,String text2}) {
     return Container(
-      width: 258,
+
       margin: EdgeInsets.only(right: 2),
       padding: EdgeInsets.only(right: 7),
 //      color: Colors.red,
       child: new Row(
 
         mainAxisAlignment:MainAxisAlignment.start ,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           new Icon(icon,color:Colors.orange,size: 20,),
           new SizedBox(width: 5,),
           new Text( text1,style: new TextStyle(fontWeight: FontWeight.bold )),
           new Text( ":",style: new TextStyle(fontWeight: FontWeight.bold )),
           Container(
-              width: 180,
               height: 30,
               padding: EdgeInsets.only(right: 3,top: 2),
 //              color: Colors.blue,
