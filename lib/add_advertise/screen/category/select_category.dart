@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iranpasman/add_advertise/bloc/add_advertise_bloc.dart';
+import 'package:iranpasman/add_advertise/bloc/add_advertise_event.dart';
+import 'package:iranpasman/add_advertise/bloc/add_advertise_state.dart';
 
 class SelectCategory extends StatefulWidget {
   @override
@@ -8,7 +12,12 @@ class SelectCategory extends StatefulWidget {
 
 class _SelectCategoryState extends State<SelectCategory> {
   int selectedNumber = 0;
-
+  AddAdvertiseBloc _bloc;
+  @override
+  void initState() {
+    _bloc= BlocProvider.of<AddAdvertiseBloc>(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +41,9 @@ class _SelectCategoryState extends State<SelectCategory> {
         backgroundColor:  Color.fromRGBO(17, 39, 50, 1),
         child: Center(child: Icon(Icons.arrow_forward_ios)),
         onPressed: (){
-
+          if(selectedNumber == 0){
+            _bloc.add(NavigateAnotherState(MasterBuyState()));
+          }
         },
       ),
     );

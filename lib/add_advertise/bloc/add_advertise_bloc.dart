@@ -11,6 +11,9 @@ class AddAdvertiseBloc extends Bloc<AddAdvertiseEvent, AddAdvertiseState> {
   Stream<AddAdvertiseState> mapEventToState(
     AddAdvertiseEvent event,
   ) async* {
+    if(event is NavigateAnotherState){
+      yield event.state;
+    }
     // TODO: Add Logic
   }
 }
