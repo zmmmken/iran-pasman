@@ -9,6 +9,10 @@ class MyBuyBloc extends Bloc<MyBuyEvent, MyBuyState> {
   Stream<MyBuyState> mapEventToState(
     MyBuyEvent event,
   ) async* {
+    if(event is NavigateAnotherState){
+      yield event.state;
+    }
+
     // TODO: Add Logic
   }
 }

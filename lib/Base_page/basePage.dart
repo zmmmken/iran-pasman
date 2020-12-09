@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iranpasman/add_advertise/add_advertise_screen.dart';
 import 'package:iranpasman/home/tabs/home/screen/homeTab.dart';
+import 'package:iranpasman/notif/notification_screen.dart';
+import 'package:iranpasman/profile/profile_screen.dart';
+import 'package:iranpasman/search/widget/page/search_screen.dart';
 import 'package:iranpasman/widgets/backdrop_appbar.dart';
 import 'package:iranpasman/widgets/custom_scaffold.dart';
 
@@ -118,9 +121,9 @@ class BasePageSatte extends State<BasePage> {
 
 
 List <Widget>tabWidget=[
-  new HomeTab(),
-  new Container(height: double.infinity,width: double.infinity,color: Colors.white,),
-  new AddAdvertiseScreen(),
-  new Container(height: double.infinity,width: double.infinity,color: Colors.orange,),
-  new Container(height: double.infinity,width: double.infinity,color: Colors.blue,),
+  HomeTab(),
+  SearchScreen(),
+  AddAdvertiseScreen(),
+  NotificationScreen(),
+  ProfileScreen()
 ];

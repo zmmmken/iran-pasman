@@ -29,10 +29,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.5.0-nullsafety.1"
-  home.bloc:
+  bloc:
     dependency: transitive
     description:
-      name: home.bloc
+      name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.0"

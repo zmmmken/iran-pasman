@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iranpasman/add_advertise/screen/category/buy/bloc/bloc.dart';
 import 'package:iranpasman/add_advertise/screen/category/model/drop_down_model.dart';
 
 class FirstBuyScreen extends StatefulWidget {
@@ -7,7 +9,7 @@ class FirstBuyScreen extends StatefulWidget {
 }
 
 class _FirstBuyScreenState extends State<FirstBuyScreen> {
-
+  MyBuyBloc _bloc;
   DropDownModel weightModel;
   DropDownModel selectedPrice;
   List<DropDownModel> weights = [
@@ -25,13 +27,18 @@ class _FirstBuyScreenState extends State<FirstBuyScreen> {
     super.initState();
     weightModel = weights[0];
     selectedPrice = prices[0];
+    _bloc = BlocProvider.of<MyBuyBloc>(context);
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          _bloc.add(NavigateAnotherState(SecondStateBuy()));
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(18.0),
@@ -45,6 +52,11 @@ class _FirstBuyScreenState extends State<FirstBuyScreen> {
               TextFormField(
                 decoration: InputDecoration(labelText: "عنوان آگهی"),
               ),
+              TextFormField(
+                decoration: InputDecoration(labelText: "توضیحات آگهی"),
+                maxLines: 4,
+              ),
+              SizedBox(height: 15,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

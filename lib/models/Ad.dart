@@ -6,6 +6,7 @@ part 'Ad.g.dart';
 class Ad{
   String id;
   String title;
+  String price;
   String description;
   String phoneNumber;
   String state;

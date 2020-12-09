@@ -12,17 +12,20 @@ class BuyController extends StatelessWidget {
   Widget build(BuildContext context) {
     var _bloc = MyBuyBloc(FirstStateBuy());
 
-    return BlocBuilder(
-        cubit: _bloc,
-        builder: (context,state){
-          if(state is FirstStateBuy){
-            return FirstBuyScreen();
-          }else if(state is SecondStateBuy){
-            return SecondBuyScreen();
-          }else if(state is ThirdStateBuy){
-            return ThirdBuyScreen();
-          }else
-            return Container();
-        });
+    return BlocProvider.value(
+      value: _bloc,
+      child: BlocBuilder(
+          cubit: _bloc,
+          builder: (context,state){
+            if(state is FirstStateBuy){
+              return FirstBuyScreen();
+            }else if(state is SecondStateBuy){
+              return SecondBuyScreen();
+            }else if(state is ThirdStateBuy){
+              return ThirdBuyScreen();
+            }else
+              return Container();
+          }),
+    );
   }
 }
