@@ -46,15 +46,15 @@ class AdvertiseItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _imageInCart(advertise.images[0]),
+                  _imageInCart(advertise.images != null ? advertise?.images[0] : ""),
                   new Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       textIconAttach(text1:"قیمت",text2: advertise.price ?? "",icon:Icons.attach_file_rounded ),
                       textIconAttach(text1:"دسته",text2: advertise.category ?? "",icon:Icons.category_rounded ),
-                      textIconAttach(text1:"استان",text2: advertise.state ?? "",icon:Icons.circle ),
-                      textIconAttach(text1:"شهر",text2: advertise.city ?? "",icon:Icons.location_on ),
+                      textIconAttach(text1:"استان",text2: advertise.state.title ?? "",icon:Icons.circle ),
+                      textIconAttach(text1:"شهر",text2: advertise.city.title ?? "",icon:Icons.location_on ),
 
                     ],
                   )

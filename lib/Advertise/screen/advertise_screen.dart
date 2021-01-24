@@ -42,17 +42,28 @@ class AdvertiseScreen extends StatelessWidget {
 //                    ]),
                 GestureDetector(
                   onTap: (){
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context){
-                        return ImageScreen(advertise.images);
-                      })
-                    );
+                    if(advertise.images != null){
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context){
+                            return ImageScreen(advertise.images);
+                          })
+                      );
+                    }
+
                   },
 
+//          Image.asset(
+//          advertise.images[0],
+//          fit: BoxFit.cover,
+//          height: 200,
+//          width: double.maxFinite,
+//          )
+//
                   child: Hero(
-                    tag: advertise.images[0],
-                    child: Image.asset(
-                      advertise.images[0],
+                    tag: advertise.images!= null ? advertise.images[0] : "noImage",
+                    child: FadeInImage(
+                      image: NetworkImage(advertise.images != null ? advertise.images[0] : "noImage",),
+                      placeholder: AssetImage("assets/images/image1.webp"),
                       fit: BoxFit.cover,
                       height: 200,
                       width: double.maxFinite,
@@ -79,11 +90,11 @@ class AdvertiseScreen extends StatelessWidget {
                                 children: [
 
                                   Text(
-                                    "استان :  ${advertise.state}",
+                                    "استان :  ${advertise.state.title}",
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                   Text(
-                                    "شهر :  ${advertise.city}",
+                                    "شهر :  ${advertise.city.title}",
                                     style: TextStyle(color: Colors.grey),
                                   ),
 
@@ -102,7 +113,7 @@ class AdvertiseScreen extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.all(4.0),
                                     child: Text(
-                                      advertise.description,
+                                      advertise.description ?? "",
                                       style: TextStyle(fontSize: 14.5),
                                       textAlign: TextAlign.justify,
                                     ),

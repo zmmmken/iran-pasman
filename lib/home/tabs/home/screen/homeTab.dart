@@ -10,18 +10,17 @@ class HomeTab extends StatefulWidget {
     // TODO: implement createState
     return HomeTabState();
   }
-
 }
 
 class HomeTabState extends State<HomeTab> {
   double headIconHeight = 60;
 
-  int currentTab=0;
-  Color selectedTabColor=Colors.green;
+  int currentTab = 0;
+  Color selectedTabColor = Colors.green;
+
   @override
   Widget build(BuildContext context) {
-   final _height=MediaQuery.of(context).size.height;
-
+    final _height = MediaQuery.of(context).size.height;
 
     // TODO: implement build
     return Padding(
@@ -29,82 +28,90 @@ class HomeTabState extends State<HomeTab> {
       child: new Column(
         children: [
           _tabBar(),
-          new SizedBox(height:10),
+          new SizedBox(height: 10),
           Expanded(
             child: Container(
-              
+
 //                color: Colors.blue,
                 child: tabsContent[currentTab]),
           ),
-
         ],
       ),
     );
   }
 
-  Widget _tabBar(){
+  Widget _tabBar() {
     return new Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        tabBarItem("assets/images/bid.svg",onTap:(){
+        tabBarItem("assets/images/bid.svg", onTap: () {
           setState(() {
-            currentTab=3;
+            currentTab = 3;
           });
-        },color:_getTabColor(3),text:"مزایده"),
-        tabBarItem("assets/images/shopping-bag.svg",onTap:(){
+        }, color: _getTabColor(3), text: "مزایده"),
+        tabBarItem("assets/images/shopping-bag.svg", onTap: () {
           setState(() {
-            currentTab=2;
+            currentTab = 2;
           });
-        },color: _getTabColor(2),text:"آگهی فروش"),
-        tabBarItem("assets/images/buy.svg",onTap:(){
+        }, color: _getTabColor(2), text: "آگهی فروش"),
+        tabBarItem("assets/images/buy.svg", onTap: () {
           setState(() {
-            currentTab=1;
+            currentTab = 1;
           });
-        },color: _getTabColor(1),text:"آگهی خرید"),
-        tabBarItem("assets/images/money.svg",onTap:(){
+        }, color: _getTabColor(1), text: "آگهی خرید"),
+        tabBarItem("assets/images/money.svg", onTap: () {
           setState(() {
-            currentTab=0;
+            currentTab = 0;
           });
-        },color: _getTabColor(0),text:"قیمت روز"),
-
+        }, color: _getTabColor(0), text: "قیمت روز"),
       ],
     );
   }
 
-  Widget tabBarItem(String imageAddress, {Function onTap, String text: "",Color color}) {
+  Widget tabBarItem(String imageAddress,
+      {Function onTap, String text: "", Color color}) {
     return GestureDetector(
       onTap: onTap,
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          new SvgPicture.asset(imageAddress, height: headIconHeight,color: color,),
-          new SizedBox(height: 5,),
-          new Text(text, style: new TextStyle(
-              color: color, fontWeight: FontWeight.w400,),)
+          new SvgPicture.asset(
+            imageAddress,
+            height: headIconHeight,
+            color: color,
+          ),
+          new SizedBox(
+            height: 5,
+          ),
+          new Text(
+            text,
+            style: new TextStyle(
+              color: color,
+              fontWeight: FontWeight.w400,
+            ),
+          )
         ],
       ),
     );
   }
 
-
-
-
-
   Color _getTabColor(int index) {
-    if(currentTab==index){
+    if (currentTab == index) {
       return selectedTabColor;
-    }else{
+    } else {
       return Colors.black54;
     }
   }
-
 }
 
-
-List<Widget> tabsContent=[
-   DailyPrice(),
-   new buyAddTab(),
+List<Widget> tabsContent = [
+  DailyPrice(),
+  BuyTab(),
 //  new Center(child: new Text("اگهی خرید"),),
-   new Center(child: new Text("اگهی فروش"),),
-   new Center(child: new Text("مزایده"),),
+  new Center(
+    child: new Text("اگهی فروش"),
+  ),
+  new Center(
+    child: new Text("مزایده"),
+  ),
 ];
