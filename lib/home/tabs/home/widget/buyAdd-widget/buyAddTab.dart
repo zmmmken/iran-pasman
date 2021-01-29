@@ -11,6 +11,10 @@ import 'package:iranpasman/network.dart';
 import 'package:iranpasman/widgets/advertise_item.dart';
 
 class BuyTab extends StatefulWidget {
+  AdTypes type;
+
+  BuyTab(this.type);
+
   @override
   _BuyTabState createState() => _BuyTabState();
 }
@@ -24,16 +28,27 @@ class _BuyTabState extends State<BuyTab> {
   int page = 1;
 
   @override
+  void didUpdateWidget(BuyTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if(widget.type != oldWidget.type){
+      getData(0);
+    }
+  }
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     prov = RepositoryProvider.of<HomeRepository>(context);
+    setState(() {
+
+    });
     getData(page);
   }
 
   getData(int page)async{
 
-    await prov.getAds(AdTypes.BUY);
+    await prov.getAds(widget.type);
     setState(() {
 
     });
@@ -43,7 +58,7 @@ class _BuyTabState extends State<BuyTab> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  prov.buyAds==null ?Center(child: CircularProgressIndicator()): Column(
+    return  prov.ads[widget.type] == null ?Center(child: CircularProgressIndicator()): Column(
       children: [
         new Container(
           height: 10,
@@ -67,7 +82,7 @@ class _BuyTabState extends State<BuyTab> {
   }
 
   Widget itemList(BuildContext context) {
-    List<Ad> temp  = RepositoryProvider.of<HomeRepository>(context).buyAds;
+    List<Ad> temp  = RepositoryProvider.of<HomeRepository>(context).ads[widget.type];
     return new Expanded(
       child: new Container(
         width: double.infinity,

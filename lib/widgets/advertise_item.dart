@@ -18,7 +18,7 @@ class AdvertiseItem extends StatelessWidget {
   TextStyle titleOfItemCartTextStyle=new TextStyle(fontWeight: FontWeight.bold,color: Colors.black);
 
   Widget itemCart(Ad advertise,BuildContext context) {
-    return GestureDetector (
+    return InkWell (
       onTap: (){
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context){
@@ -27,10 +27,10 @@ class AdvertiseItem extends StatelessWidget {
         );
         print("hi");
       },
-      child: new Container(
+      child: new Ink(
         width: double.infinity,
-        margin: EdgeInsets.only(left: 20,right: 20),
-        padding: EdgeInsets.only(bottom: 10,top: 10),
+//        margin: EdgeInsets.only(left: 20,right: 20),
+        padding: EdgeInsets.only(bottom: 10,top: 10,right: 20,left: 20),
         decoration: new BoxDecoration(
 //           color: Colors.grey,
           border: new Border(bottom:itemCartLineSide, ),

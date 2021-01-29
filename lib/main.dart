@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return RepositoryProvider(
       create: (context)=> HomeRepository(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Iran Pasmand',
         routes:_rout ,
         theme: ThemeData(
           textTheme: TextTheme(),

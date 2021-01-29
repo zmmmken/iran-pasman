@@ -6,7 +6,6 @@ part 'category.g.dart';
 class Category{
   int id;
   String title;
-  String key;
 
   @JsonSerializable(nullable: true)
   String image;
@@ -14,6 +13,7 @@ class Category{
   @JsonSerializable(nullable: true)
   String description;
 
+  List<Category> childs;
 
 
   Category();
@@ -21,5 +21,14 @@ class Category{
   factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
 
   Map<String, dynamic> toJson() => _$CategoryToJson(this);
+
+  bool operator ==(other) {
+    return (other.id == id);
+  }
+
+  @override
+  // TODO: implement hashCode
+  int get hashCode => super.hashCode;
+
 
 }

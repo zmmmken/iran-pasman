@@ -183,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.9"
+  digit_to_persian_word:
+    dependency: "direct main"
+    description:
+      name: digit_to_persian_word
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.5"
   dio:
     dependency: "direct main"
     description:

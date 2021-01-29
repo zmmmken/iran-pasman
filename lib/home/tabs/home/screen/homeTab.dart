@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iranpasman/category/bloc/bloc.dart';
+import 'package:iranpasman/category/category_screen.dart';
 import 'package:iranpasman/home/tabs/home/widget/buyAdd-widget/buyAddTab.dart';
 import 'package:iranpasman/home/tabs/home/widget/dailyPrice-widget/dailyPrice.dart';
+import 'package:iranpasman/models/ad_types.dart';
 
 class HomeTab extends StatefulWidget {
   @override
@@ -23,19 +27,35 @@ class HomeTabState extends State<HomeTab> {
     final _height = MediaQuery.of(context).size.height;
 
     // TODO: implement build
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
-      child: new Column(
-        children: [
-          _tabBar(),
-          new SizedBox(height: 10),
-          Expanded(
-            child: Container(
-
-//                color: Colors.blue,
-                child: tabsContent[currentTab]),
-          ),
-        ],
+    return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.storage),
+        backgroundColor: Theme.of(context).primaryColor,
+        label: Text("دسته بندی"),
+        isExtended: true,
+        onPressed: ()async{
+          var res = await Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BlocProvider(
+              create: (context)=>CategoryBloc(InitialCategoryState()),
+              child: CategoryScreen())));
+          setState(() {
+            currentTab = 2;
+          });
+        },
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 15),
+        child: new Column(
+          children: [
+            Container(
+                color: Colors.white,
+                child: _tabBar()),
+            new SizedBox(height: 10),
+            Expanded(
+              child: Container(
+                  child: tabsContent[currentTab]),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -105,12 +125,10 @@ class HomeTabState extends State<HomeTab> {
 }
 
 List<Widget> tabsContent = [
-  DailyPrice(),
-  BuyTab(),
+  new DailyPrice(),
+  new BuyTab(AdTypes.BUY),
 //  new Center(child: new Text("اگهی خرید"),),
-  new Center(
-    child: new Text("اگهی فروش"),
-  ),
+  new BuyTab(AdTypes.SELL),
   new Center(
     child: new Text("مزایده"),
   ),
