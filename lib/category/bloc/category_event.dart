@@ -10,3 +10,10 @@ class GetCategoryList extends CategoryEvent{
   GetCategoryList(this.context);
 
 }
+
+class SubmitCategoryForm extends CategoryEvent{
+  BuildContext context;
+
+  SubmitCategoryForm(this.context);
+
+}

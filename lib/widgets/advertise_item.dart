@@ -46,7 +46,7 @@ class AdvertiseItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _imageInCart(advertise.images != null ? advertise?.images[0] : ""),
+                  _imageInCart((advertise.images != null && advertise.images.length>0) ? advertise?.images[0] : ""),
                   new Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,

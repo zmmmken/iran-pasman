@@ -28,9 +28,9 @@ class HomeRepository {
   List<Ad> sellAds;
   int sellPage = 0;
 
-  getAds(AdTypes type) async {
+  getAds(AdTypes type,context) async {
     try {
-      List<Ad> temp = await network.getAds(page: pages[type]);
+      List<Ad> temp = await network.getAds(page: pages[type],category: selectedCategory.length>0 ? selectedCategory[0].id : null);
       if(ads[type]== null){
         ads[type] = [];
       }

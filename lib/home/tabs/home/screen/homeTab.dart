@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iranpasman/category/bloc/bloc.dart';
 import 'package:iranpasman/category/category_screen.dart';
+import 'package:iranpasman/home/home_repository.dart';
 import 'package:iranpasman/home/tabs/home/widget/buyAdd-widget/buyAddTab.dart';
 import 'package:iranpasman/home/tabs/home/widget/dailyPrice-widget/dailyPrice.dart';
 import 'package:iranpasman/models/ad_types.dart';
@@ -25,6 +26,7 @@ class HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
+    HomeRepository repository = RepositoryProvider.of<HomeRepository>(context);
 
     // TODO: implement build
     return Scaffold(
@@ -37,8 +39,16 @@ class HomeTabState extends State<HomeTab> {
           var res = await Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BlocProvider(
               create: (context)=>CategoryBloc(InitialCategoryState()),
               child: CategoryScreen())));
+          if(res != null && res==true){
+            repository.buyAds = [];
+            repository.sellAds = [];
+            repository.ads[AdTypes.BUY] = [];
+            repository.ads[AdTypes.SELL] = [];
+            print("clean");
+
+          }
           setState(() {
-            currentTab = 2;
+            currentTab = 0;
           });
         },
       ),

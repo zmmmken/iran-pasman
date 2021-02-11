@@ -33,16 +33,9 @@ class AdvertiseScreen extends StatelessWidget {
           if (state is ShowProduct) {
             return Stack(
               children: [
-//                CarouselSlider(
-//                    options: CarouselOptions(
-//                        viewportFraction: 1, height: size.width - 100),
-//                    items: [
-//                      Image.asset("assets/images/image1.webp", fit: BoxFit.cover),
-//                      Image.asset("assets/images/image2.webp", fit: BoxFit.cover),
-//                    ]),
                 GestureDetector(
                   onTap: (){
-                    if(advertise.images != null){
+                    if(advertise.images != null && advertise.images.length> 0){
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context){
                             return ImageScreen(advertise.images);
@@ -52,17 +45,10 @@ class AdvertiseScreen extends StatelessWidget {
 
                   },
 
-//          Image.asset(
-//          advertise.images[0],
-//          fit: BoxFit.cover,
-//          height: 200,
-//          width: double.maxFinite,
-//          )
-//
-                  child: Hero(
-                    tag: advertise.images!= null ? advertise.images[0] : "noImage",
+                child: Hero(
+                    tag: (advertise.images!= null && advertise.images.length > 0) ? advertise.images[0] : "noImage",
                     child: FadeInImage(
-                      image: NetworkImage(advertise.images != null ? advertise.images[0] : "noImage",),
+                      image: NetworkImage((advertise.images != null && advertise.images.length > 0) ? advertise.images[0] : "noImage",),
                       placeholder: AssetImage("assets/images/image1.webp"),
                       fit: BoxFit.cover,
                       height: 200,
@@ -140,7 +126,6 @@ class AdvertiseScreen extends StatelessWidget {
               ],
             );
           }
-
           return CircularProgressIndicator();
         },
       ),

@@ -28,9 +28,7 @@ class CategoryScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal:25.0,vertical: 25),
                       child: InkWell(
                         onTap: (){
-                          HomeRepository repository = RepositoryProvider.of<HomeRepository>(context);
-                          repository.selectedCategory = repository.tempSelectedCategory;
-                          Navigator.pop(context);
+                          _bloc.add(SubmitCategoryForm(context));
                         },
                         borderRadius: BorderRadius.circular(15),
                         child: Ink(

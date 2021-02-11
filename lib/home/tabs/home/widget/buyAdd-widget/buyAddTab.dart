@@ -47,8 +47,7 @@ class _BuyTabState extends State<BuyTab> {
   }
 
   getData(int page)async{
-
-    await prov.getAds(widget.type);
+    await prov.getAds(widget.type,context);
     setState(() {
 
     });

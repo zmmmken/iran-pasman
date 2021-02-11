@@ -28,13 +28,13 @@ class NetworkProvider {
   NetworkProvider._internal();
 
   Map<AdTypes, String> types = {
-    AdTypes.BUY: "خرید",
-    AdTypes.SELL: "فروش",
-    AdTypes.AUCTION: "مزایده",
+    AdTypes.BUY: "buy",
+    AdTypes.SELL: "sell",
+    AdTypes.AUCTION: "auction",
   };
 
   //location Api
-  Future getAllState() async {
+  Future<List<City>> getAllState() async {
     var response = await dio.get('/state/all');
     var data = response.data;
     BaseResponse baseResponse =
@@ -55,7 +55,7 @@ class NetworkProvider {
   }
 
   Future getCityByStateId(int id) async {
-    var response = await dio.get('/city/showById/' + id.toString());
+    var response = await dio.get('/city/allByStateId/' + id.toString());
     var data = response.data;
     BaseResponse baseResponse =
         BaseResponse.fromJson(data as Map<String, dynamic>);
@@ -144,4 +144,41 @@ class NetworkProvider {
     List<Ad> ads = temp.map((e) => Ad.fromJson(e)).toList();
     return ads;
   }
+  Future<Ad> getSingleAd({
+    int id
+  }) async {
+    var response = await dio.get('/agahi' + id.toString());
+    var data = response.data;
+    BaseResponse baseResponse =
+        BaseResponse.fromJson(data as Map<String, dynamic>);
+
+    Ad ad = Ad.fromJson(baseResponse.data);
+    return ad;
+  }
+
+
+  //Authentication
+  Future<BaseResponse> login(String phoneNumber)async{
+    var response = await dio.post('/login',data: {
+      "mobile" : phoneNumber
+    });
+    var data = response.data;
+    BaseResponse baseResponse =
+    BaseResponse.fromJson(data as Map<String, dynamic>);
+    return baseResponse;
+  }
+
+  Future<BaseResponse> verify(String phoneNumber,String code)async{
+    var response = await dio.post('/verify',data: {
+      "mobile" : phoneNumber,
+      "code":code
+    });
+    var data = response.data;
+    BaseResponse baseResponse =
+    BaseResponse.fromJson(data as Map<String, dynamic>);
+    return baseResponse;
+  }
+
+
+
 }

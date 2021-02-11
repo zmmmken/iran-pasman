@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iranpasman/buy-passmand-screen/screen/buyScreen.dart';
 import 'package:iranpasman/home/home_repository.dart';
+import 'package:iranpasman/local_storage.dart';
+import 'package:iranpasman/network.dart';
+import 'package:iranpasman/select_state.dart';
 import 'package:iranpasman/widgets/splash_screen.dart';
 
 import 'Base_page/basePage.dart';
+import 'login/enter_phone_number_screen.dart';
 
 void main() {
+  Storage storage = new Storage();
+
   runApp(MyApp());
 }
 
@@ -14,12 +20,16 @@ class MyApp extends StatelessWidget {
 
   Map _rout=<String,Widget Function(BuildContext context)>{
     "/BuyPassmand":(context)=>BuyPassmand(),
-    '/splash' : (context)=>SplashScreen()
+    '/splash' : (context)=>SplashScreen(),
+    '/enter_phone_number' : (context)=>EnterPhoneNumberScreen(),
   };
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context)=> HomeRepository(),
+    return MultiRepositoryProvider(
+      providers: [
+            RepositoryProvider(create: (context)=> HomeRepository()),
+            RepositoryProvider(create: (context)=> NetworkProvider())
+      ],
       child: MaterialApp(
         title: 'Iran Pasmand',
         routes:_rout ,
@@ -39,7 +49,9 @@ class MyApp extends StatelessWidget {
           )
 
         ),
-        home: SplashScreen(),
+//        home: SplashScreen(),
+        home: EnterPhoneNumberScreen(),
+//        home: SelectState(),
         builder: (context, widget) {
           return Directionality(textDirection: TextDirection.rtl, child: widget);
         },
