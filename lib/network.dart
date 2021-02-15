@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:iranpasman/models/Ad.dart';
 import 'package:iranpasman/models/ad_types.dart';
 import 'package:iranpasman/models/base_result.dart';
@@ -17,9 +18,10 @@ class NetworkProvider {
   factory NetworkProvider() {
 // or new Dio with a BaseOptions instance.
     BaseOptions options = new BaseOptions(
-      baseUrl: "http://zayeat.dzakhm.com/public/api/v1",
-      connectTimeout: 5000,
+      baseUrl: "https://zayeat.dzakhm.com/public/api/v1",
+      // connectTimeout: 5000,
       receiveTimeout: 3000,
+
     );
     dio = new Dio(options);
     return _singleton;
@@ -162,6 +164,7 @@ class NetworkProvider {
     var response = await dio.post('/login',data: {
       "mobile" : phoneNumber
     });
+    debugPrint("${response.statusCode}");
     var data = response.data;
     BaseResponse baseResponse =
     BaseResponse.fromJson(data as Map<String, dynamic>);
