@@ -8,7 +8,7 @@ import 'package:iranpasman/add_advertise/screen/category/select_category.dart';
 class AddAdvertiseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var _bloc = AddAdvertiseBloc(MasterBuyState());
+    var _bloc = AddAdvertiseBloc(InitialAddAdvertiseState());
     List<AddAdvertiseState> _stack = [];
     return BlocProvider.value(value: _bloc,
     child: BlocBuilder<AddAdvertiseBloc, dynamic>(
