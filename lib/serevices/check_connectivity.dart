@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CheckConnectivity  {
+  static ConnectivityResult prevStateWifi;
 
   void checkConnection() {
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-      Get.back();
+
       // Got a new connectivity status!
       if(result == ConnectivityResult.mobile || result == ConnectivityResult.wifi ){
+        Get.back();
         //we have connected to internet
       }else{
         //connections error

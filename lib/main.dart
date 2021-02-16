@@ -15,6 +15,11 @@ import 'Base_page/basePage.dart';
 import 'login/enter_phone_number_screen.dart';
 GetIt getIt = GetIt.instance;
 
+void checkConnection(){
+  getIt<CheckConnectivity>().checkConnection();
+}
+
+
 void main() {
   Storage storage = new Storage();
   setupLocator();
@@ -31,7 +36,8 @@ class MyApp extends StatelessWidget {
   };
   @override
   Widget build(BuildContext context) {
-    var myConnection=getIt<CheckConnectivity>().checkConnection();
+    checkConnection();
+    // var myConnection=getIt<CheckConnectivity>().checkConnection();
    
     return MultiRepositoryProvider(
       providers: [
