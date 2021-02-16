@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_it/get_it.dart';
 import 'package:iranpasman/buy-passmand-screen/screen/buyScreen.dart';
 import 'package:iranpasman/home/home_repository.dart';
 import 'package:iranpasman/local_storage.dart';
 import 'package:iranpasman/network.dart';
 import 'package:iranpasman/select_state.dart';
+import 'package:iranpasman/serevices/check_connectivity.dart';
+import 'package:iranpasman/serviceLocator.dart';
 import 'package:iranpasman/widgets/splash_screen.dart';
 
 import 'Base_page/basePage.dart';
 import 'login/enter_phone_number_screen.dart';
+GetIt getIt = GetIt.instance;
 
 void main() {
   Storage storage = new Storage();
-
+  setupLocator();
   runApp(MyApp());
 
 }
@@ -26,12 +31,14 @@ class MyApp extends StatelessWidget {
   };
   @override
   Widget build(BuildContext context) {
+    var myConnection=getIt<CheckConnectivity>().checkConnection();
+   
     return MultiRepositoryProvider(
       providers: [
             RepositoryProvider(create: (context)=> HomeRepository()),
             RepositoryProvider(create: (context)=> NetworkProvider())
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Iran Pasmand',
         routes:_rout ,
         theme: ThemeData(

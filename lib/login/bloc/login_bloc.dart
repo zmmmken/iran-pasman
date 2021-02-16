@@ -18,6 +18,7 @@ class LoginBloc extends Bloc<LoginEvent, MasterState> {
   ) async* {
     if (event is SendCode) {
       yield ShowLoading();
+
       NetworkProvider provider =
           RepositoryProvider.of<NetworkProvider>(event.context);
       try {
