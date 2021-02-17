@@ -82,6 +82,7 @@ class NetworkProvider {
   Future getRootCategory() async {
     var response = await dio.get('/category/root');
     var data = response.data;
+
     BaseResponse baseResponse =
         BaseResponse.fromJson(data as Map<String, dynamic>);
     List temp = baseResponse.data as List;

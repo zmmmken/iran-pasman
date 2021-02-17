@@ -17,6 +17,7 @@ GetIt getIt = GetIt.instance;
 
 void checkConnection(){
   getIt<CheckConnectivity>().checkConnection();
+
 }
 
 
@@ -29,6 +30,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
 
+
   Map _rout=<String,Widget Function(BuildContext context)>{
     "/BuyPassmand":(context)=>BuyPassmand(),
     '/splash' : (context)=>SplashScreen(),
@@ -36,8 +38,8 @@ class MyApp extends StatelessWidget {
   };
   @override
   Widget build(BuildContext context) {
-    checkConnection();
-    // var myConnection=getIt<CheckConnectivity>().checkConnection();
+    // checkConnection();
+    var myConnection=getIt<CheckConnectivity>().checkConnection();
    
     return MultiRepositoryProvider(
       providers: [
