@@ -8,4 +8,5 @@ void setupLocator() {
   locator.registerLazySingleton<CheckConnectivity>(() => CheckConnectivity());
   locator.registerLazySingleton<ShowInterrupt>(() => ShowInterrupt());
 
+
 }
