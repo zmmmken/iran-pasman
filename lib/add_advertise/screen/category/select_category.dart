@@ -42,7 +42,7 @@ class _SelectCategoryState extends State<SelectCategory> {
         child: Center(child: Icon(Icons.arrow_forward_ios)),
         onPressed: (){
           if(selectedNumber == 0){
-            _bloc.add(NavigateAnotherState(MasterBuyState()));
+            _bloc.add(NavigateAnotherState(context,MasterBuyState()));
           }
         },
       ),

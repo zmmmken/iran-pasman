@@ -6,7 +6,7 @@ abstract class AddAdvertiseEvent {}
 
 class NavigateAnotherState extends AddAdvertiseEvent{
   final AddAdvertiseState state;
-
-  NavigateAnotherState(this.state);
+  final context;
+  NavigateAnotherState(this.context,this.state);
 
 }

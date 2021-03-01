@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 
 class CategoryItem extends StatefulWidget {
   Category category;
+  bool justSelectOne;
 
 
-  CategoryItem(this.category);
+  CategoryItem(this.category,this.justSelectOne);
 
   @override
   _CategoryItemState createState() => _CategoryItemState();
@@ -69,7 +70,7 @@ class _CategoryItemState extends State<CategoryItem> {
                     ),
                   );
                 }else{
-                  return CategoryItem(category.childs[index-1]);
+                  return CategoryItem(category.childs[index-1],widget.justSelectOne);
                 }
           }));
     }
@@ -82,7 +83,7 @@ class _CategoryItemState extends State<CategoryItem> {
       trailing: ShowDoneIcon(category),
       onTap: (){
         setState(() {
-          selectCategory(category);
+          selectCategory(category,widget.justSelectOne);
         });
       },
     );}
@@ -117,7 +118,7 @@ class _CategoryItemState extends State<CategoryItem> {
 
                 ),
               ),
-              Expanded(child: CategoryItem(e)),
+              Expanded(child: CategoryItem(e,widget.justSelectOne)),
             ],
           ),
         )).toList()
@@ -134,7 +135,7 @@ class _CategoryItemState extends State<CategoryItem> {
     }else return Icon(Icons.arrow_drop_down, size: 15,color: Colors.black.withOpacity(.4),);
   }
 
-  selectCategory(Category category){
+  selectCategory(Category category,bool justSelectOne){
     HomeRepository repository = RepositoryProvider.of<HomeRepository>(context);
     if(category.childs.length > 0){
       setState(() {
@@ -145,6 +146,9 @@ class _CategoryItemState extends State<CategoryItem> {
         repository.tempSelectedCategory.remove(category);
       });
     }else{
+      if(justSelectOne){
+        Navigator.of(context).pop(category);
+      }
       setState(() {
         repository.tempSelectedCategory.add(category);
       });

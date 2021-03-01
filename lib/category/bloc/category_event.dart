@@ -17,3 +17,9 @@ class SubmitCategoryForm extends CategoryEvent{
   SubmitCategoryForm(this.context);
 
 }
+
+class ReturnSelectedCategory extends CategoryEvent{
+  final context;
+
+  ReturnSelectedCategory(this.context);
+}

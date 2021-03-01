@@ -14,17 +14,28 @@ class CategoryBloc extends Bloc<CategoryEvent, MasterState> {
   Stream<MasterState> mapEventToState(
     CategoryEvent event,
   ) async* {
-    // TODO: Add Logic
+
     if(event is GetCategoryList){
       yield ShowLoading();
       HomeRepository repository = RepositoryProvider.of<HomeRepository>(event.context);
       List<Category> res =await repository.getRootCategory();
       yield ShowCategory(res);
     }
+
+
     else if(event is SubmitCategoryForm){
       HomeRepository repository = RepositoryProvider.of<HomeRepository>(event.context);
       repository.selectedCategory = repository.tempSelectedCategory;
       Navigator.pop(event.context,true);
     }
+
+
+    else if (event is ReturnSelectedCategory){
+      HomeRepository repository = RepositoryProvider.of<HomeRepository>(event.context);
+      Navigator.pop(event.context,repository.tempSelectedCategory);
+    }
+
+
+
   }
 }

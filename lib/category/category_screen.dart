@@ -6,6 +6,12 @@ import 'package:iranpasman/home/home_repository.dart';
 import 'category_item.dart';
 
 class CategoryScreen extends StatelessWidget {
+
+  bool justSelectOne = false;
+
+
+  CategoryScreen({this.justSelectOne=false});
+
   @override
   Widget build(BuildContext context) {
     CategoryBloc _bloc = BlocProvider.of<CategoryBloc>(context);
@@ -26,9 +32,9 @@ class CategoryScreen extends StatelessWidget {
                   if(index == state.categories.length){
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal:25.0,vertical: 25),
-                      child: InkWell(
+                      child: justSelectOne ? Container():InkWell(
                         onTap: (){
-                          _bloc.add(SubmitCategoryForm(context));
+                            _bloc.add(SubmitCategoryForm(context));
                         },
                         borderRadius: BorderRadius.circular(15),
                         child: Ink(
@@ -62,7 +68,7 @@ class CategoryScreen extends StatelessWidget {
 
                       ),
                     ),
-                    Expanded(child: CategoryItem(state.categories[index])),
+                    Expanded(child: CategoryItem(state.categories[index],justSelectOne)),
                   ],
                 );
                 }
