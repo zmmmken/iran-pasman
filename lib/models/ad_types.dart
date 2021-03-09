@@ -1,5 +1,6 @@
 enum AdTypes{
   BUY,
   SELL,
-  AUCTION
+  AUCTION,
+  DAILY_PRICE
 }

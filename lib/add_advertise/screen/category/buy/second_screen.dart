@@ -48,7 +48,7 @@ class _SecondBuyScreenState extends State<SecondBuyScreen> {
         },
       ),
       body: BaseWidget(
-        title: "آگهی خرید",
+        title: _bloc.appBarTitle,
         body: BlocBuilder(
           cubit: _bloc,
           builder: (context,state){
@@ -82,7 +82,7 @@ class _SecondBuyScreenState extends State<SecondBuyScreen> {
                     ),
                     SizedBox(height: 15,),
                     ListTile(
-                      title: Text("دسته بندی"),
+                      title: Text("انتخاب دسته بندی",style: TextStyle(fontSize: 15),),
                       trailing: _bloc.selectedCategory==null
                           ? Icon(Icons.arrow_forward_ios_rounded, size: 14,)
                           : Chip(label: Text(_bloc.selectedCategory.title,style: TextStyle(fontSize: 10),)),

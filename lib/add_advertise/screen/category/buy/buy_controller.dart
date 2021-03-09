@@ -5,12 +5,13 @@ import 'package:iranpasman/add_advertise/screen/category/buy/bloc/my_buy_state.d
 import 'package:iranpasman/add_advertise/screen/category/buy/screen_one.dart';
 import 'package:iranpasman/add_advertise/screen/category/buy/second_screen.dart';
 import 'package:iranpasman/add_advertise/screen/category/buy/third_screen.dart';
+import 'package:iranpasman/models/ad_types.dart';
 import './bloc/bloc.dart';
 class BuyController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _bloc = MyBuyBloc(FirstStateBuy());
+    var _bloc = MyBuyBloc(FirstStateBuy(),AdTypes.BUY,"آکهی خرید");
 
     return BlocProvider.value(
       value: _bloc,

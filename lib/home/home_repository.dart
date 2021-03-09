@@ -12,8 +12,8 @@ class HomeRepository {
   List<Category> allCategory;
 
   Map<AdTypes,List<Ad>> ads = {
-    AdTypes.BUY : null,
-    AdTypes.SELL : null
+    AdTypes.BUY : [],
+    AdTypes.SELL :[]
   };
 
   Map<AdTypes,int> pages = {
@@ -21,26 +21,28 @@ class HomeRepository {
     AdTypes.SELL : 0
   };
 
-
-  List<Ad> buyAds;
-  int buyPage = 0;
-
-  List<Ad> sellAds;
-  int sellPage = 0;
-
-  getAds(AdTypes type,context) async {
+  getAds(AdTypes type) async {
     try {
-      List<Ad> temp = await network.getAds(page: pages[type],category: selectedCategory.length>0 ? selectedCategory[0].id : null);
+      List<Ad> temp = await network.getAds(
+          page: pages[type],
+          category: selectedCategory.length>0
+                          ? selectedCategory[0].id
+                          : null
+      );
+
+
       if(ads[type]== null){
         ads[type] = [];
       }
+
         ads[type].addAll(temp);
         if(temp.length > 0)
           pages[type]++;
         return ads[type];
 
-    }catch(e){}
-
+    }catch(e){
+      rethrow;
+    }
 
   }
 

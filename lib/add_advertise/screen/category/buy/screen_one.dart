@@ -29,7 +29,7 @@ class _FirstBuyScreenState extends State<FirstBuyScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return BaseWidget(
-      title: "آگهی خرید",
+      title: _bloc.appBarTitle,
       body: BlocBuilder(
         cubit: _bloc,
         builder: (context, state) {
@@ -41,7 +41,7 @@ class _FirstBuyScreenState extends State<FirstBuyScreen> {
             return Scaffold(
               floatingActionButton: FloatingActionButton(
                 backgroundColor: Theme.of(context).primaryColor,
-                child: Icon(Icons.arrow_forward_ios,size: 15,),
+                child: Icon(Icons.arrow_forward_ios,),
                 onPressed: () {
                   _bloc.images = [];
                   Navigator.of(context)

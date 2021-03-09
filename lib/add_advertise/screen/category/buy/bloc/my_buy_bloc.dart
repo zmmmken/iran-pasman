@@ -9,16 +9,20 @@ import 'package:iranpasman/category/bloc/category_bloc.dart';
 import 'package:iranpasman/category/bloc/category_state.dart';
 import 'package:iranpasman/category/category_screen.dart';
 import 'package:iranpasman/master_bloc/master_state.dart';
+import 'package:iranpasman/models/ad_types.dart';
 import 'package:iranpasman/models/category.dart';
 import 'package:iranpasman/models/value_unit.dart';
 import 'package:iranpasman/network.dart';
 import './bloc.dart';
 
 class MyBuyBloc extends Bloc<MyBuyEvent, MasterState> {
-  MyBuyBloc(MasterState initialState) : super(initialState);
+  MyBuyBloc(MasterState initialState, this.adType, this.appBarTitle)
+      : super(initialState);
 
+  final AdTypes adType;
+  final String appBarTitle;
 
-  List<File> images=[];
+  List<File> images = [];
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -30,9 +34,6 @@ class MyBuyBloc extends Bloc<MyBuyEvent, MasterState> {
 
   List<ValueUnit> weightUnits;
   List<ValueUnit> priceUnits;
-
-
-
 
   Category selectedCategory;
 
@@ -61,17 +62,19 @@ class MyBuyBloc extends Bloc<MyBuyEvent, MasterState> {
       var res = await Navigator.of(event.context).push(MaterialPageRoute(
           builder: (context) => BlocProvider(
               create: (context) => CategoryBloc(InitialCategoryState()),
-              child: CategoryScreen(justSelectOne: true,))));
+              child: CategoryScreen(
+                justSelectOne: true,
+              ))));
 
-      if(res != null){
-          selectedCategory = res;
+      if (res != null) {
+        selectedCategory = res;
       }
       yield ShowData();
-
     }
 
-    if (event is AddToAdvertise){
-      NetworkProvider network = RepositoryProvider.of<NetworkProvider>(event.context);
+    if (event is AddToAdvertise) {
+      NetworkProvider network =
+          RepositoryProvider.of<NetworkProvider>(event.context);
       network.addAdvertise(this);
     }
   }

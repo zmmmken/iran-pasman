@@ -12,7 +12,7 @@ import 'package:iranpasman/serviceLocator.dart';
 import 'package:iranpasman/widgets/splash_screen.dart';
 
 import 'Base_page/basePage.dart';
-import 'login/enter_phone_number_screen.dart';
+import 'login/screen/enter_phone_number_screen.dart';
 GetIt getIt = GetIt.instance;
 
 void checkConnection(){

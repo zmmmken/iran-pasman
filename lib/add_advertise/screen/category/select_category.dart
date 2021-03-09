@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iranpasman/add_advertise/bloc/add_advertise_bloc.dart';
 import 'package:iranpasman/add_advertise/bloc/add_advertise_event.dart';
 import 'package:iranpasman/add_advertise/bloc/add_advertise_state.dart';
+import 'package:iranpasman/models/ad_types.dart';
 
 class SelectCategory extends StatefulWidget {
   @override
@@ -42,7 +43,9 @@ class _SelectCategoryState extends State<SelectCategory> {
         child: Center(child: Icon(Icons.arrow_forward_ios)),
         onPressed: (){
           if(selectedNumber == 0){
-            _bloc.add(NavigateAnotherState(context,MasterBuyState()));
+            _bloc.add(NavigateAnotherState(context,AdTypes.BUY));
+          }else if(selectedNumber ==1){
+            _bloc.add(NavigateAnotherState(context,AdTypes.SELL));
           }
         },
       ),

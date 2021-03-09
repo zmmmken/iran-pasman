@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iranpasman/add_advertise/add_advertise_screen.dart';
 import 'package:iranpasman/home/tabs/home/screen/homeTab.dart';
-import 'package:iranpasman/notif/notification_screen.dart';
+import 'package:iranpasman/notif/screen/notification_screen.dart';
 import 'package:iranpasman/profile/bloc/profile_bloc.dart';
 import 'package:iranpasman/profile/bloc/profile_state.dart';
 import 'package:iranpasman/profile/profile_screen.dart';
@@ -57,20 +57,22 @@ class BasePageSatte extends State<BasePage> {
       new BottomNavigationBarItem(
           icon: new Icon(Icons.search), label: "search"),
       new BottomNavigationBarItem(
-          icon: Container(
-            height: 45,
+          icon: AnimatedContainer(
+            height:45,
             width: 45,
             child: new Icon(
               Icons.add,
               color: Colors.white,
-              size: 40,
+              size: 30,
             ),
+            duration: Duration(milliseconds: 350),
+            curve: Curves.linear,
             decoration: new BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderRadius: BorderRadius.all(Radius.circular(_currentIndex == 2 ?10 :25)),
                 gradient: new LinearGradient(
                   colors: [
-                    Colors.orangeAccent,
-                    Colors.orange.withBlue(380),
+                    _currentIndex == 2 ?Colors.orangeAccent : Colors.orangeAccent,
+                    _currentIndex == 2 ?Colors.orange.withBlue(380) : Colors.orange.withBlue(380),
                   ],
                   begin: Alignment.bottomLeft,
                   end: Alignment.centerRight,

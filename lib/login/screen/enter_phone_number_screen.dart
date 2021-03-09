@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iranpasman/login/bloc/login_event.dart';
 import 'package:iranpasman/master_bloc/bloc.dart';
 
-import 'bloc/bloc.dart';
-import 'bloc/login_bloc.dart';
+import '../bloc/bloc.dart';
+import '../bloc/login_bloc.dart';
 
 class EnterPhoneNumberScreen extends StatelessWidget {
   GlobalKey<FormFieldState> phoneKey = GlobalKey<FormFieldState>();
